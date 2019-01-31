@@ -10,8 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ObserveBuildingController">
    <children>
       <Label layoutX="338.0" layoutY="1.0" prefHeight="58.0" prefWidth="326.0" text="Observe Building">
          <font>
@@ -60,8 +59,8 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="14.0" layoutY="313.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="214.0" text="Disable Apartment" />
-      <Button layoutX="14.0" layoutY="380.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="214.0" text="Observe apartment" />
+      <Button fx:id="disableApartmentBtn" layoutX="14.0" layoutY="313.0" mnemonicParsing="false" onAction="#disableApartmentBtnAction" prefHeight="47.0" prefWidth="214.0" text="Disable Apartment" />
+      <Button fx:id="observeApartmentBtn" layoutX="14.0" layoutY="380.0" mnemonicParsing="false" onAction="#observeApartmentBtnAction" prefHeight="47.0" prefWidth="214.0" text="Observe apartment" />
       <Text layoutX="14.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select one apartment from the list and choose action for it! " textAlignment="CENTER" wrappingWidth="213.958984375">
          <font>
             <Font size="14.0" />
@@ -93,7 +92,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="familyNameInout" layoutX="811.0" layoutY="115.0">
+      <TextField fx:id="familyNameInput" layoutX="811.0" layoutY="115.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -104,6 +103,11 @@
          </font>
       </Label>
       <ComboBox fx:id="comboBoxFreeApartments" layoutX="787.0" layoutY="181.0" onAction="#comboBoxFreeApartmentsAction" prefWidth="150.0" promptText="Free Apartments" />
-      <Button fx:id="addApartmentBtn" layoutX="739.0" layoutY="221.0" mnemonicParsing="false" onAction="#addApartmentBtnAction" prefHeight="47.0" prefWidth="214.0" text="Add Apartment" />
+      <Button fx:id="addApartmentBtn" layoutX="739.0" layoutY="256.0" mnemonicParsing="false" onAction="#addApartmentBtnAction" prefHeight="47.0" prefWidth="214.0" text="Add Apartment" />
+      <Label fx:id="fillAllInputsLabel" layoutX="775.0" layoutY="218.0" prefHeight="20.0" prefWidth="175.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
