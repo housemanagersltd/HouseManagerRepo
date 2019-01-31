@@ -16,15 +16,16 @@ import java.util.List;
 
 public class BuildingMethods {
     private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private static int count = 0;
 
-    public static int addBuilding(String address, int numberOfFloors, int commonParts, Integer agentID){
+    public static int addBuilding(String address, int numberOfFloors, int commonParts, Integer agentID) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
-        Integer buildingId =null;
+        Integer buildingId = null;
         try {
             tx = session.beginTransaction();
-                Building bi = new Building(address, numberOfFloors, commonParts, agentID);
-            buildingId = (int)session.save(bi);
+            Building bi = new Building(address, numberOfFloors, commonParts, agentID);
+            buildingId = (int) session.save(bi);
             bi.setIdBuilding(buildingId);
             tx.commit();
         } catch (HibernateException e) {
@@ -39,7 +40,7 @@ public class BuildingMethods {
     }
 
     //ALL the BUILDINGS of an AGENT --------------------------------------------------
-    public static List getBuildingsWithAgent (int id) {
+    public static List getBuildingsWithAgent(int id) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
@@ -60,7 +61,7 @@ public class BuildingMethods {
     }
 
     //GET ONE ------------------------------------------------------------------------
-    public static Building getOne(Integer managerID){
+    public static Building getOne(Integer managerID) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
@@ -99,39 +100,46 @@ public class BuildingMethods {
     }
 
     // CALCULATE TAX ---------------------------------------------------------------------------
-    public static double calculateBuildingTax ( int buildingID){
+    public static double calculateBuildingTax(int buildingID) {
 
         List<Resident> reList = new ArrayList<>();
 
         List<Apartment> apList = ApatrmentMethods.getApartmentsInBuilding(buildingID);
 
-        for(Apartment ap: apList){
+        for (Apartment ap : apList) {
             List<Resident> rr = ResidentMethods.getResidentsInApartment(ap.getIdapartment());
-            for(Resident re: rr){
+            for (Resident re : rr) {
 
-                    reList.add(re);
+                reList.add(re);
             }
         }
 
         Building bu = getOne(buildingID);
         double agSalary = AgentMethods.calculateSalary(bu.getIdBuilding());
         int residentsCount = 0;
-        Double tax = (2*BuildingMethods.getOne(buildingID).getCommonPartsArea()+ agSalary );
-        for(Resident re: reList){
-            if(re.getIsChild() == 1 || re.getIsDisabled() == 1){
+        Double tax = (2 * BuildingMethods.getOne(buildingID).getCommonPartsArea() + agSalary);
+        for (Resident re : reList) {
+            if (re.getIsChild() == (byte) 1 || re.getIsDisabled() == (byte) 1) {
                 residentsCount += 0; //  не участват в подялбата на таксите
-            } else if(re.getIdResident() == 1){
+            } else if (re.getIdResident() == (byte) 1) {
                 boolean prezEdin = true;
-                if (prezEdin){
-                    residentsCount +=1;
+                if (prezEdin) {
+                    residentsCount += 1;
                     prezEdin = !prezEdin;
-                }else{
+                } else {
                     prezEdin = !prezEdin;
                 }
             }
         }
 
-        double taxPerResident = tax / residentsCount;
+        count = residentsCount;
+        return tax;
+    }
+
+    // PER PERSON
+    public static double taxPerPerson(int buildingID) {
+        double tax = calculateBuildingTax(buildingID);
+        double taxPerResident = tax / count;
         return taxPerResident;
     }
 }

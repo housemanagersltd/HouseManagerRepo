@@ -37,6 +37,27 @@ public class ResidentMethods {
         return residentID;
     }
 
+    // All ------------------------------------------------------------------
+    public static ObservableList<Resident> getAllResidents() {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            List managers = session.createQuery("FROM Resident ").list();
+            ObservableList<Resident> managersOL = FXCollections.observableArrayList(managers);
+            tx.commit();
+            return managersOL;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     //ALL the RESIDENTS in a specific APARTMENT -------------------------------------------
     public static List getResidentsInApartment(int apartmentID) {
         Session session = sessionFactory.openSession();
@@ -79,7 +100,7 @@ public class ResidentMethods {
     }
 
     // DELETE --------------------------------------------------------------------------
-    public static void deleleteAgent(Integer attractionID) {
+    public static void deleteResident(Integer attractionID) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         try {
