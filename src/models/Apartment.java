@@ -13,6 +13,15 @@ public class Apartment {
     private String ownerFamily;
     private int buildingIdBuilding;
 
+    public Apartment(){
+
+    }
+
+    public Apartment(String ownerFamily, int number,int buildingID){
+        this.number = number;
+        this.ownerFamily = ownerFamily;
+        this.buildingIdBuilding = buildingID;
+    }
     @Id
     @Column(name = "idapartment")
     public int getIdapartment() {

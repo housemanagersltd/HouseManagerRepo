@@ -11,9 +11,19 @@ public class Building {
     private int idBuilding;
     private String address;
     private int numberOfFloors;
-    private String agent;
     private int commonPartsArea;
     private Integer agentIdAgent;
+
+    public Building(){
+
+    }
+
+    public Building(String address, int numberOfFloors,int commonPartsArea, Integer agentID ){
+        this.address = address;
+        this.agentIdAgent = agentID;
+        this.commonPartsArea = commonPartsArea;
+        this.numberOfFloors = numberOfFloors;
+    }
 
     @Id
     @Column(name = "idBuilding")
@@ -46,16 +56,6 @@ public class Building {
     }
 
     @Basic
-    @Column(name = "agent")
-    public String getAgent() {
-        return agent;
-    }
-
-    public void setAgent(String agent) {
-        this.agent = agent;
-    }
-
-    @Basic
     @Column(name = "commonPartsArea")
     public int getCommonPartsArea() {
         return commonPartsArea;
@@ -84,12 +84,11 @@ public class Building {
                 numberOfFloors == building.numberOfFloors &&
                 commonPartsArea == building.commonPartsArea &&
                 Objects.equals(address, building.address) &&
-                Objects.equals(agent, building.agent) &&
                 Objects.equals(agentIdAgent, building.agentIdAgent);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idBuilding, address, numberOfFloors, agent, commonPartsArea, agentIdAgent);
+        return Objects.hash(idBuilding, address, numberOfFloors, commonPartsArea, agentIdAgent);
     }
 }

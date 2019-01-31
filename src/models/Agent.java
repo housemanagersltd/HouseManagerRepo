@@ -10,7 +10,14 @@ import java.util.Objects;
 public class Agent {
     private int idAgent;
     private String name;
-    private double salary;
+
+    public Agent(){
+
+    }
+
+    public Agent(String name){
+        this.name =name;
+    }
 
     @Id
     @Column(name = "idAgent")
@@ -32,28 +39,17 @@ public class Agent {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "salary")
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Agent agent = (Agent) o;
         return idAgent == agent.idAgent &&
-                Double.compare(agent.salary, salary) == 0 &&
                 Objects.equals(name, agent.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idAgent, name, salary);
+        return Objects.hash(idAgent, name);
     }
 }

@@ -10,11 +10,25 @@ import java.util.Objects;
 public class Resident {
     private int idResident;
     private String name;
-    private byte isRetired;
-    private byte isChild;
-    private byte isDisabled;
-    private Byte hasPaid;
+    private byte isRetired = 0;
+    private byte isChild = 0;
+    private byte isDisabled = 0;
+    private Byte hasPaid = 0;
     private int apartmentIdapartment;
+
+    public Resident(){
+
+    }
+    public Resident(String name, String status, int idApartment){
+        this.name = name;
+        this.apartmentIdapartment = idApartment;
+        switch (status) {
+            case ("Child") : {this.isChild = 1; break;}
+            case ("Retired") : {this.isRetired = 1; break;}
+            case ("Disabled") : {this.isDisabled = 1; break;}
+            default: {System.out.println( "@ String not matching @"); break;}
+        }
+    }
 
     @Id
     @Column(name = "idResident")
