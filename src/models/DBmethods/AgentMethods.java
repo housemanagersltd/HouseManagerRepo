@@ -2,15 +2,13 @@ package models.DBmethods;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import models.Agent;
-import models.Building;
-import models.HibernateUtil;
+import models.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AgentMethods {
@@ -77,10 +75,49 @@ public class AgentMethods {
         }
     }
 
-    //CALCULATE SALARY --------------------------------------------------------------------
-    public static double calculateSalary(){
-        List<Building> buList = new LinkedList<>();
-
-        return 20.0;
+    //GET ONE ------------------------------------------------------------------------
+    public static Agent getOne(Integer managerID){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Agent manager = (Agent) session.get(Agent.class, managerID);
+            tx.commit();
+            return manager;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
     }
+
+    //CALCULATE SALARY --------------------------------------------------------------------
+    public static double calculateSalary(int agentID){
+        List<Resident> reList = new ArrayList<>();
+        List<Apartment> apList = new ArrayList<>();
+        List<Building> buList = BuildingMethods.getBuildingsWithAgent(agentID);
+        for(Building bu: buList){
+                apList = ApatrmentMethods.getApartmentsInBuilding(bu.getIdBuilding());
+                for(Apartment ap: apList){
+                    List<Resident> rr = ResidentMethods.getResidentsInApartment(ap.getIdapartment());
+                        for(Resident re: rr ){
+                            reList.add(re);
+                        }
+                }
+        }
+        Double salary = 0.0;
+        for(Resident re: reList){
+            salary += 3.5; // 3.5$ per resident.
+        }
+        return salary;
+    }
+    //REGISTER PAYMENT ----------------------------------------------------------------------
+    public static void registerPayment(int residentID, Byte b){
+        ResidentMethods.updateHasPaid(residentID, b);
+    }
+
 }

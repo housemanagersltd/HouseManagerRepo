@@ -2,6 +2,7 @@ package models.DBmethods;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import models.Apartment;
 import models.HibernateUtil;
 import models.Resident;
 import org.hibernate.HibernateException;
@@ -57,6 +58,26 @@ public class ResidentMethods {
         return null;
     }
 
+    //GET ONE ------------------------------------------------------------------------
+    public static Resident getOne(Integer managerID){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Resident manager = (Resident) session.get(Resident.class, managerID);
+            tx.commit();
+            return manager;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     // DELETE --------------------------------------------------------------------------
     public static void deleleteAgent(Integer attractionID) {
         Session session = sessionFactory.openSession();
@@ -65,6 +86,26 @@ public class ResidentMethods {
             tx = session.beginTransaction();
             Resident attraction = session.get(Resident.class, attractionID);
             session.delete(attraction);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    // SET hasPaid ----------------------------------------------------------------------------------
+    public static void updateHasPaid (Integer residentID , Byte b) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Resident re = (Resident) session.get(Resident.class, residentID);
+            re.setHasPaid(b);
+            session.update(re);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
