@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="272.0" layoutY="24.0" prefHeight="52.0" prefWidth="475.0" text="      AGENTS DESK" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="46.0" />
+         </font>
+      </Label>
+      <TableView fx:id="agentsTableView" layoutX="308.0" layoutY="118.0" prefHeight="454.0" prefWidth="403.0">
+         <columns>
+            <TableColumn fx:id="agentNameColomn" prefWidth="295.20001220703125" text="Agents full name" />
+            <TableColumn prefWidth="108.0" text="Phone number" />
+         </columns>
+      </TableView>
+      <Button fx:id="backBtn" layoutX="45.0" layoutY="54.0" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="27.0" prefWidth="38.0" text="Back">
+         <font>
+            <Font name="System Bold" size="9.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteAgentBtn" layoutX="34.0" layoutY="345.0" mnemonicParsing="false" onAction="#deleteAgentBtnAction" prefHeight="86.0" prefWidth="212.0" text="Fire agent">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="observeAgentBtn" layoutX="34.0" layoutY="465.0" mnemonicParsing="false" onAction="#observeAgentAction" prefHeight="86.0" prefWidth="212.0" text="Observe agent">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Text layoutX="34.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGENT FORM" wrappingWidth="211.99998259544367" />
+      <Text layoutX="34.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agent name :" />
+      <Label fx:id="agentNameInput" layoutX="120.0" layoutY="159.0" onDragDetected="#buildingAddressInputAction" prefHeight="18.0" prefWidth="132.0" />
+      <Button fx:id="deleteAgentBtn1" layoutX="34.0" layoutY="219.0" mnemonicParsing="false" onAction="#deleteAgentBtnAction" prefHeight="27.0" prefWidth="212.0" text="Fire agent">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Text fx:id="pleaseFillNameLabel" layoutX="34.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="211.99998259544367" />
+   </children>
+</AnchorPane>

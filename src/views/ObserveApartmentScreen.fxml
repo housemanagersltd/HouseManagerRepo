@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="349.0" layoutY="1.0" text="Observe Apartment">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Button fx:id="backBtn" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#backBtnAction" text="Back" />
+      <BottomNavigationButton fx:id="homeBtn" layoutX="70.0" layoutY="17.0" onAction="#homeBtnAction" text="Home" />
+      <Label layoutX="14.0" layoutY="91.0" text="Family Name:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="125.0" text="Number Of Apartment:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="familyNameLabel" layoutX="116.0" layoutY="91.0" prefHeight="25.0" prefWidth="175.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="numberOfApartmentLabel" layoutX="178.0" layoutY="125.0" prefHeight="25.0" prefWidth="109.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Text layoutX="14.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select one resident from the list and choose action for it! " textAlignment="CENTER" wrappingWidth="213.99998664855957">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="deleteApartmentBtn" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#deleteApartmentBtnAction" prefHeight="47.0" prefWidth="214.0" text="Delete Aparment" />
+      <Button fx:id="payTaxBtn" layoutX="14.0" layoutY="395.0" mnemonicParsing="false" onAction="#payTaxBtnAction" prefHeight="47.0" prefWidth="214.0" text="Pay tax" />
+      <CheckBox fx:id="selectAllResidentsCheck" layoutX="19.0" layoutY="366.0" mnemonicParsing="false" onAction="#selectAllResidentsCheckAction" text="Select All Residents" />
+      <TableView fx:id="residentsTableView" layoutX="333.0" layoutY="91.0" prefHeight="501.0" prefWidth="400.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="192.0" text="Name" />
+          <TableColumn fx:id="hasPaidColumn" prefWidth="77.0" text="Has paid ?" />
+            <TableColumn fx:id="statusColumn" prefWidth="130.0" text="Status" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="66.0" prefHeight="25.0" prefWidth="256.0" text="Info about the selcted apartment">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="479.0" layoutY="66.0" prefHeight="25.0" prefWidth="109.0" text="Residents List" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="842.0" layoutY="66.0" prefHeight="25.0" prefWidth="109.0" text="Add resident">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="retiredCheckBox" layoutX="817.0" layoutY="192.0" mnemonicParsing="false" onAction="#retiredCheckBoxAction" text="Retired">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="childCheckBox" layoutX="752.0" layoutY="192.0" mnemonicParsing="false" onAction="#childCheckBoxAction" text="Child">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="diabledCheckBox" layoutX="897.0" layoutY="192.0" mnemonicParsing="false" onAction="#diabledCheckBoxAction" text="Disabled">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </RadioButton>
+      <TextField layoutX="803.0" layoutY="112.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="752.0" layoutY="117.0" text="Name:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="746.0" layoutY="163.0" text="Please choose one of the following: ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="addResident" layoutX="758.0" layoutY="231.0" mnemonicParsing="false" onAction="#addResidentAction" prefHeight="47.0" prefWidth="214.0" text="Add resident" />
+   </children>
+</AnchorPane>
