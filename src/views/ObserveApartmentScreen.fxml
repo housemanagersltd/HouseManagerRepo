@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -12,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ObserveApartmentController">
    <children>
       <Label layoutX="349.0" layoutY="1.0" text="Observe Apartment">
          <font>
@@ -21,7 +19,6 @@
          </font>
       </Label>
       <Button fx:id="backBtn" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#backBtnAction" text="Back" />
-      <BottomNavigationButton fx:id="homeBtn" layoutX="70.0" layoutY="17.0" onAction="#homeBtnAction" text="Home" />
       <Label layoutX="14.0" layoutY="91.0" text="Family Name:">
          <font>
             <Font size="16.0" />
@@ -72,17 +69,17 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <RadioButton fx:id="retiredCheckBox" layoutX="817.0" layoutY="192.0" mnemonicParsing="false" onAction="#retiredCheckBoxAction" text="Retired">
+      <RadioButton fx:id="retiredRadio" layoutX="817.0" layoutY="192.0" mnemonicParsing="false" onAction="#retiredCheckBoxAction" text="Retired">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="childCheckBox" layoutX="752.0" layoutY="192.0" mnemonicParsing="false" onAction="#childCheckBoxAction" text="Child">
+      <RadioButton fx:id="childRadio" layoutX="752.0" layoutY="192.0" mnemonicParsing="false" onAction="#childCheckBoxAction" text="Child">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="diabledCheckBox" layoutX="897.0" layoutY="192.0" mnemonicParsing="false" onAction="#diabledCheckBoxAction" text="Disabled">
+      <RadioButton fx:id="disabledRadio" layoutX="897.0" layoutY="192.0" mnemonicParsing="false" onAction="#disabledCheckBoxAction" text="Disabled">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -102,6 +99,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="addResident" layoutX="758.0" layoutY="231.0" mnemonicParsing="false" onAction="#addResidentAction" prefHeight="47.0" prefWidth="214.0" text="Add resident" />
+      <Button fx:id="addResident" layoutX="758.0" layoutY="255.0" mnemonicParsing="false" onAction="#addResidentAction" prefHeight="47.0" prefWidth="214.0" text="Add resident" />
+      <Label fx:id="fillAllFieldsLabel" layoutX="784.0" layoutY="231.0" prefHeight="20.0" prefWidth="163.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="homeBtn" layoutX="62.0" layoutY="17.0" mnemonicParsing="false" onAction="#homeBtnAction" text="Home" />
    </children>
 </AnchorPane>

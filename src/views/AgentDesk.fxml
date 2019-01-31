@@ -4,25 +4,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AgentsDeskController">
    <children>
-      <Label layoutX="272.0" layoutY="24.0" prefHeight="52.0" prefWidth="475.0" text="      AGENTS DESK" textAlignment="CENTER">
+      <Label layoutX="272.0" layoutY="20.0" prefHeight="52.0" prefWidth="475.0" text="      AGENTS DESK" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="46.0" />
          </font>
       </Label>
       <TableView fx:id="agentsTableView" layoutX="308.0" layoutY="118.0" prefHeight="454.0" prefWidth="403.0">
          <columns>
-            <TableColumn fx:id="agentNameColomn" prefWidth="295.20001220703125" text="Agents full name" />
-            <TableColumn prefWidth="108.0" text="Phone number" />
+            <TableColumn fx:id="agentNameColumn" prefWidth="295.20001220703125" text="Agents full name" />
+            <TableColumn fx:id="phoneNumberColumn" prefWidth="108.0" text="Phone number" />
          </columns>
       </TableView>
-      <Button fx:id="backBtn" layoutX="45.0" layoutY="54.0" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="27.0" prefWidth="38.0" text="Back">
+      <Button fx:id="backBtn" layoutX="20.0" layoutY="41.0" mnemonicParsing="false" onAction="#backBtnAction" prefHeight="27.0" prefWidth="38.0" text="Back">
          <font>
             <Font name="System Bold" size="9.0" />
          </font>
@@ -37,14 +37,34 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Text layoutX="34.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGENT FORM" wrappingWidth="211.99998259544367" />
-      <Text layoutX="34.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agent name :" />
-      <Label fx:id="agentNameInput" layoutX="120.0" layoutY="159.0" onDragDetected="#buildingAddressInputAction" prefHeight="18.0" prefWidth="132.0" />
-      <Button fx:id="deleteAgentBtn1" layoutX="34.0" layoutY="219.0" mnemonicParsing="false" onAction="#deleteAgentBtnAction" prefHeight="27.0" prefWidth="212.0" text="Fire agent">
+      <Text layoutX="92.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HIRE AGENT" wrappingWidth="95.99998259544367">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Text>
+      <Text layoutX="20.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agent name :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Text>
+      <Button fx:id="hireAgentBtn" layoutX="34.0" layoutY="219.0" mnemonicParsing="false" onAction="#hireAgentBtnAction" prefHeight="27.0" prefWidth="212.0" text="Hire agent">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
       <Text fx:id="pleaseFillNameLabel" layoutX="34.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="211.99998259544367" />
+      <TextField fx:id="agentNameInput" layoutX="108.0" layoutY="154.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Text layoutX="452.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALL AGENTS" wrappingWidth="95.99998593330383">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Label fx:id="fillAllFieldsLabel" layoutX="64.0" layoutY="194.0" prefHeight="20.0" prefWidth="163.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
