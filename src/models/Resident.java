@@ -23,9 +23,9 @@ public class Resident {
         this.name = name;
         this.apartmentIdapartment = idApartment;
         switch (status) {
-            case ("Child") : {this.isChild = 1; break;}
-            case ("Retired") : {this.isRetired = 1; break;}
-            case ("Disabled") : {this.isDisabled = 1; break;}
+            case ("Child") : {this.isChild = 1; this.hasPaid = 1;break;}
+            case ("Retired") : {this.isRetired = 1;  break;}
+            case ("Disabled") : {this.isDisabled = 1; this.hasPaid = 1; break;}
             default: {System.out.println( "@ String not matching @"); break;}
         }
     }

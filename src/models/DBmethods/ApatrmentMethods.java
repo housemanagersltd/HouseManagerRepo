@@ -56,6 +56,26 @@ public class ApatrmentMethods {
         return null;
     }
 
+    //GET ONE ------------------------------------------------------------------------
+    public static Apartment getOne(Integer managerID){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Apartment manager = (Apartment) session.get(Apartment.class, managerID);
+            tx.commit();
+            return manager;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     // DELETE --------------------------------------------------------------------------
     public static void deleteApartment(Integer attractionID) {
         Session session = sessionFactory.openSession();
