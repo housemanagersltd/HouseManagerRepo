@@ -18,13 +18,13 @@ public class BuildingMethods {
     private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private static int count = 0;
 
-    public static int addBuilding(String address, int numberOfFloors, int commonParts, Integer agentID) {
+    public static int addBuilding(String address, int numberOfFloors, int commonParts, Integer agentID, int numberOfApartments) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         Integer buildingId = null;
         try {
             tx = session.beginTransaction();
-            Building bi = new Building(address, numberOfFloors, commonParts, agentID);
+            Building bi = new Building(address, numberOfFloors, commonParts, agentID , numberOfApartments);
             buildingId = (int) session.save(bi);
             bi.setIdBuilding(buildingId);
             tx.commit();

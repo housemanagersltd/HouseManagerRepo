@@ -2,9 +2,11 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC</property>
         <property name="hibernate.connection.username">mysql</property>
         <property name="hibernate.connection.password">mysql</property>
+
+
         <mapping class="models.Agent"/>
         <mapping class="models.Apartment"/>
         <mapping class="models.Building"/>

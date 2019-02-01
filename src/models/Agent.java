@@ -19,6 +19,8 @@ public class Agent {
         this.name =name;
     }
 
+
+
     @Id
     @Column(name = "idAgent")
     public int getIdAgent() {

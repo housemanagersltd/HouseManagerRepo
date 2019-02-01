@@ -2,7 +2,6 @@ package models.DBmethods;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import models.Apartment;
 import models.HibernateUtil;
 import models.Resident;
 import org.hibernate.HibernateException;

@@ -22,6 +22,8 @@ public class Apartment {
         this.ownerFamily = ownerFamily;
         this.buildingIdBuilding = buildingID;
     }
+
+
     @Id
     @Column(name = "idapartment")
     public int getIdapartment() {

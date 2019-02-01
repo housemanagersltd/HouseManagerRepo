@@ -1,10 +1,15 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import models.Agent;
+import models.DBmethods.AgentMethods;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class AgentsDeskController implements Initializable {
     @FXML
-    public TableView agentsTableView;
+    public TableView<Agent> agentsTableView;
     @FXML
     public TableColumn agentNameColumn;
     @FXML
@@ -34,27 +39,44 @@ public class AgentsDeskController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        final ObservableList<Agent> agentData = FXCollections.observableArrayList(AgentMethods.getAgents());
+
+        agentNameColumn.setCellValueFactory(
+                new PropertyValueFactory<>("name"));
+
+        agentsTableView.setItems(agentData);
 
     }
 
     public void hireAgentBtnAction(ActionEvent actionEvent) {
-        if (agentNameInput.getText().isEmpty()){
+        if (agentNameInput.getText().isEmpty()) {
             fillAllFieldsLabel.setText("Please fill all fields!");
+        } else {
+            String name;
+            name = agentNameInput.getText();
+            AgentMethods.addAgent(name);
         }
     }
+
+
 
     public void observeAgentAction(ActionEvent actionEvent) throws IOException {
         Transitions.open("../views/AgentWorkbenchScreen.fxml", "Agent Workbench", actionEvent);
     }
 
     public void deleteAgentBtnAction(ActionEvent actionEvent) {
+        Agent selectedObject = agentsTableView.getSelectionModel().getSelectedItem();
+        if (selectedObject != null) {
+            agentsTableView.getItems().removeAll(selectedObject);
+            AgentMethods.deleleteAgent(selectedObject.getIdAgent());
+        }else{
+            Transitions.alertMessage();
+        }
     }
 
-    //DONE
     public void backBtnAction(ActionEvent actionEvent) throws IOException {
         Transitions.home(actionEvent);
     }
-
 
 
 }

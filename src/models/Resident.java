@@ -10,11 +10,12 @@ import java.util.Objects;
 public class Resident {
     private int idResident;
     private String name;
-    private byte isRetired = 0;
-    private byte isChild = 0;
-    private byte isDisabled = 0;
-    private Byte hasPaid = 0;
+    private byte isRetired;
+    private byte isChild;
+    private byte isDisabled;
+    private Byte hasPaid;
     private int apartmentIdapartment;
+
 
     public Resident(){
 
