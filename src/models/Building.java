@@ -19,12 +19,13 @@ public class Building {
 
     }
 
-    public Building(String address, int numberOfFloors,int commonPartsArea, Integer agentID, int numberOfApartments){
+    public Building(String address, int numberOfFloors,int commonPartsArea, Integer agentID, int numberOfApartments, Integer agId){
         this.address = address;
         this.agentIdAgent = agentID;
         this.commonPartsArea = commonPartsArea;
         this.numberOfFloors = numberOfFloors;
         this.numberOfApartments = numberOfApartments;
+        this.agentIdAgent = agentID;
     }
 
 

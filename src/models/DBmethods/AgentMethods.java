@@ -83,6 +83,8 @@ public class AgentMethods {
             tx = session.beginTransaction();
             Agent manager = (Agent) session.get(Agent.class, managerID);
             tx.commit();
+
+            //manager.setIdAgent();
             return manager;
         } catch (HibernateException e) {
             if (tx != null) {

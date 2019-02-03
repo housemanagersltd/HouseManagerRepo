@@ -37,6 +37,11 @@ public class AgentsDeskController implements Initializable {
     @FXML
     public Label fillAllFieldsLabel;
 
+    private static Agent selectedAgent;
+    public static Agent getSelectedAgent(){
+        return selectedAgent;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final ObservableList<Agent> agentData = FXCollections.observableArrayList(AgentMethods.getAgents());
@@ -55,13 +60,21 @@ public class AgentsDeskController implements Initializable {
             String name;
             name = agentNameInput.getText();
             AgentMethods.addAgent(name);
+            ObservableList<Agent> data = FXCollections.observableArrayList(AgentMethods.getAgents());
+            agentsTableView.setItems(data);
         }
     }
 
 
 
     public void observeAgentAction(ActionEvent actionEvent) throws IOException {
-        Transitions.open("../views/AgentWorkbenchScreen.fxml", "Agent Workbench", actionEvent);
+
+        selectedAgent = agentsTableView.getSelectionModel().getSelectedItem();
+        if (selectedAgent != null) {
+            Transitions.open("../views/AgentWorkbenchScreen.fxml", "Agent Workbench", actionEvent);
+        }else{
+            Transitions.alertMessage();
+        }
     }
 
     public void deleteAgentBtnAction(ActionEvent actionEvent) {
